@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Node Api Test</title>
+			<!-- Latest compiled and minified CSS -->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+			<!-- jQuery library -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+			<!-- Popper JS -->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+			<!-- Latest compiled JavaScript -->
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		</head>
+		<body>
+			<div class="container-fluid">
+				<div class="row pt-3 pb-3" style="background-color:#363636">
+				<div class="col-sm-12 text-white">
+					<div> (1) Node Api Insert Req:</div>
+					<div>Req Type: POST</div>
+					<div>Req Body Params: name, email, phone</div>
+					<div>{ URL } http://127.0.0.1:3000/users/</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6 mt-4">
+					<form action="http://127.0.0.1:3000/users/" method="POST">
+					<label>Name:</label>
+					<input type="text" class="form-control" id="name" name="name">
+					<label>Email:</label>
+					<input type="email" class="form-control" id="email" name="email">
+					<label>Phone:</label>
+					<input type="text" class="form-control" id="phone" name="phone">
+					<button type="submit" class="submit_Insert btn btn-info mt-2 float-right">Submit</button>
+					</form>
+				</div>
+				<div class="col-sm-3"></div>
+			</div>
+			</div>
+		</body>
+	</html>

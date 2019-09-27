@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Node Api Test</title>
+			<!-- Latest compiled and minified CSS -->
+			<link rel="stylesheet" type="text/css" href="scripts/bootstrap.min.css">
+			<link rel="stylesheet" type="text/css" href="scripts/font-awesome.min.css">
+
+			<!-- jQuery library -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+			<!-- Popper JS -->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+			<!-- Latest compiled JavaScript -->
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+			<link rel="stylesheet" type="text/css" href="scripts/datatblecss.css">
+			<script src="scripts/datatable.js"></script>
+		</head>
+		<body>
+			<div class="container-fluid">
+				<div class="row pt-3 pb-3" style="background-color:#363636">
+					<div class="col-sm-12 text-white">
+						<div> (1) Node Api Insert Req:</div>
+						<div>Req Type: POST</div>
+						<div>Req Body Params: name, email, phone</div>
+						<div>{ URL } http://127.0.0.1:3000/users/</div>
+						<div>{ Node Server File } E:\Node_rest_api\restapi</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3"></div>
+					<div class="col-sm-6 mt-4">
+						<div class="notifydiv"></div>
+						<form id="post_form">
+						<label>Name:</label>
+						<input type="text" class="form-control" id="name" name="name">
+						<label>Email:</label>
+						<input type="email" class="form-control" id="email" name="email">
+						<label>Phone:</label>
+						<input type="text" class="form-control" id="phone" name="phone">
+						<button class="submit_Insert btn btn-info mt-2 float-right">Submit</button>
+						</form>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+			</div>
+			<div class="container-fluid mt-2">
+				<div class="row pt-3 pb-3" style="background-color:#363636">
+					<div class="col-sm-12 text-white">
+						<div> (2) Node Api Fetech Req:</div>
+						<div>Req Type: GET</div>
+						<div>{ URL } http://127.0.0.1:3000/users/</div>
+						<div>{ Node Server File } E:\Node_rest_api\restapi <span class="btn btn-info float-right get_data">Fetch Data</span></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3"></div>
+					<div class="col-sm-6 mt-3" id="fetch_table">
+						<table class="table" id="fetchTable">
+						  <thead class="thead-dark ">
+						    <tr>
+						      <th scope="col">#</th>
+						      <th scope="col">Name</th>
+						      <th scope="col">Email</th>
+						      <th scope="col">Phone</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						    	<td></td>
+						    	<td id="data_fetching">Fetch Data by clicking on button</td>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+			</div>
+			<div class="container-fluid mt-2">
+				<div class="row pt-3 pb-3" style="background-color:#363636">
+					<div class="col-sm-12 text-white">
+						<div> (3) Node Api Fetech Specific Req:</div>
+						<div>Req Type: GET</div>
+						<div>Req Body Params: User id</div>
+						<div>{ URL } http://127.0.0.1:3000/users/:id</div>
+						<div>{ Node Server File } E:\Node_rest_api\restapi <input class="float-right ml-1 mt-1" type="text" name="id" id="user_id"> <span class="btn btn-info float-right get_data_specific">Fetch Data</span></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3"></div>
+					<div class="col-sm-6 mt-3" id="fetch_table">
+						<table class="table" id="fetchTable">
+						  <thead class="thead-dark ">
+						    <tr>
+						      <th scope="col">#</th>
+						      <th scope="col">Name</th>
+						      <th scope="col">Email</th>
+						      <th scope="col">Phone</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						    	<td id="data_id"></td>
+						    	<td id="data_name"></td>
+						    	<td id="data_fetching_specific">Fetch Data by clicking on button</td>
+						    	<td id="data_phone"></td>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+			</div>
+			<div class="container-fluid mt-2">
+				<div class="row pt-3 pb-3" style="background-color:#363636">
+					<div class="col-sm-12 text-white">
+						<div> (4) Node Api Update Specific Req:</div>
+						<div>Req Type: POST</div>
+						<div>Req Params: User id</div>
+						<div>Req Body Params: name, phone</div>
+						<div>{ URL } http://127.0.0.1:3000/userUpdate</div>
+						<div>{ Node Server File } E:\Node_rest_api\restapi <input class="float-right ml-1 mt-1" type="text" name="id" id="update_user_id"> <span class="btn btn-info float-right get_data_update">Fetch Data</span></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3"></div>
+					<div class="col-sm-6 mt-3" id="fetch_table">
+						<div class="notifydivupdate"></div>
+						<label>Name:</label>
+						<input type="text" class="form-control" id="update_name" name="name">
+						<label>Phone:</label>
+						<input type="hidden" name="id" id="update_id">
+						<input type="text" class="form-control" id="update_phone" name="phone">
+						<button class="submit_Update btn btn-info mt-2 float-right">Update</button>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+			</div>
+			<div class="container-fluid mt-2">
+				<div class="row pt-3 pb-3" style="background-color:#363636">
+					<div class="col-sm-12 text-white">
+						<div> (5) Node Api Delete Specific Req:</div>
+						<div>Req Type: POST</div>
+						<div>Req Params: User id</div>
+						<div>{ URL } http://127.0.0.1:3000/userDelete</div>
+						<div>{ Node Server File } E:\Node_rest_api\restapi <input class="float-right ml-1 mt-1" type="text" name="id" id="delete_user_id"> <span class="btn btn-info float-right delete_user_id">Delete User</span></div>
+					</div>
+					<div class="col-sm-12">
+						<div class="float-right notifydivudelete">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container-fluid mt-2">
+				<div class="row pt-5 mt-5 pb-3" style="background-color:#363636">
+					<div class="col-sm-12">
+						<div align="center" class="text-white"> Node Api's Having Mysql Database.</div>
+					</div>
+				</div>
+			</div>
+		</body>
+	</html>
+	<script>     
+	    // Attach a submit handler to the form 
+	    // Attach a submit handler to the form 
+		$("#post_form").submit(function(event) {
+		    event.preventDefault();
+		    var name = $('#name').val();
+		    var email = $('#email').val();
+		    var phone = $('#phone').val();
+		    var req = "http://127.0.0.1:3000/users";
+		    $.ajax({
+		      type: 'POST',
+		      url: req,
+		      data: {
+		      	name: name,
+		      	email : email,
+		      	phone : phone,
+		      },
+		      success: function(data) {
+		        var result = JSON.parse(data);
+		        if (result.success == 'success') {
+		        	$('.notifydiv').html('<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong>Successfully Added!</div>');
+		        }else if (result.error == 'error'){
+		        	$('.notifydiv').html('<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong>Email Already Exist</div>');
+		        }
+		      }
+		    });
+		  });
+
+		//updating the data
+		$(".submit_Update").click(function() {
+		    var name = $('#update_name').val();
+		    var phone = $('#update_phone').val();
+		    var id = $('#update_id').val();
+		    var req = "http://127.0.0.1:3000/userUpdate";
+		    $.ajax({
+		      type: 'POST',
+		      url: req,
+		      data: {
+		      	name: name,
+		      	phone : phone,
+		      	id : id,
+		      },
+		      success: function(data) {
+		        var result = JSON.parse(data);
+		        if (result.success == 'success') {
+		        	$('.notifydivupdate').html('<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong>Successfully Updated!</div>');
+		        }else if (result.error == 'error'){
+		        	$('.notifydivupdate').html('<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong></div>');
+		        }
+		      }
+		    });
+		    
+		  });
+
+		
+
+		$('.get_data').click(function()
+			{
+				$('#data_fetching').html('<div>Data is loading...</div>');
+				$.getJSON('http://127.0.0.1:3000/users',function(data)
+				{
+					data_table = '';
+					data_table += '<table class="table" id="fetchTable">';
+					data_table += '<thead class="thead-dark ">';
+					data_table += '<tr>';
+					data_table += '<th scope="col">#</th>';
+					data_table += '<th scope="col">Name</th>';
+					data_table += '<th scope="col">Email</th>';
+					data_table += '<th scope="col">Phone</th>';
+					data_table += '</tr>';
+					data_table += '</thead>';
+					data_table += '<tbody>';
+					for(i in data){
+					data_table += '<tr>';
+					data_table += '<td>'+data[i].id+'</td>';
+					data_table += '<td>'+data[i].name+'</td>';
+					data_table += '<td>'+data[i].email+'</td>';
+					data_table += '<td>'+data[i].phone+'</td>';
+					data_table += '</tr>';
+					}
+					data_table += '</tbody>';
+					data_table += '</table>';
+					$('#fetch_table').html(data_table);
+					$('#fetchTable').DataTable({
+						 "lengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "All"]]
+					});
+				});
+			});
+
+		$('.get_data_specific').click(function()
+			{
+				var id = $('#user_id').val();
+				console.log(id);
+				$('#data_fetching_specific').html('<div>Data is loading...</div>');
+				$.getJSON('http://127.0.0.1:3000/users/'+id,function(data)
+				{
+					if (data == '') {
+						$('#data_id').html('');
+						$('#data_name').html('');
+						$('#data_fetching_specific').html('No Record Found.');
+						$('#data_phone').html('');
+					}else{
+						$('#data_id').html(data[0].id);
+						$('#data_name').html(data[0].name);
+						$('#data_fetching_specific').html(data[0].email);
+						$('#data_phone').html(data[0].phone);
+					}
+				});
+			});
+
+		$('.get_data_update').click(function()
+			{
+				var id = $('#update_user_id').val();
+				$.getJSON('http://127.0.0.1:3000/users/'+id,function(data)
+				{
+					if (data == '') {
+						$('#update_name').val('');
+						$('#update_phone').val('');
+						$('#update_id').val('');
+					}else{
+						$('#update_id').val(data[0].id);
+						$('#update_name').val(data[0].name);
+						$('#update_phone').val(data[0].phone);
+					}
+				});
+			});
+
+		$('.delete_user_id').click(function()
+			{
+				var id = $('#delete_user_id').val();
+				console.log(id);
+			    var req = "http://127.0.0.1:3000/userDelete";
+			    $.ajax({
+			      type: 'POST',
+			      url: req,
+			      data: {
+			      	id : id,
+			      },
+			      success: function(data) {
+			        var result = JSON.parse(data);
+			        if (result.success == 'success') {
+			        	$('.notifydivudelete').html('<div class="alert alert-success alert-dismissible" style="margin: 4% 0% 0% 0%;"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong>Deleted Successfully!</div>');
+			        }else if (result.error == 'error'){
+			        	$('.notifydivudelete').html('<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong></div>');
+			        }
+			      }
+			    });
+			});
+
+
+
+	</script>
